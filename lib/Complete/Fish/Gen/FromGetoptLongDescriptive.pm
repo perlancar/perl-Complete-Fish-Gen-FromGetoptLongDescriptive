@@ -7,8 +7,6 @@ use 5.010001;
 use strict;
 use warnings;
 
-use Getopt::Long::Descriptive::Util qw(parse_getopt_long_opt_descriptive_spec);
-
 our %SPEC;
 
 require Exporter;
@@ -75,8 +73,8 @@ sub gen_fish_complete_from_getopt_long_descriptive_spec {
     Complete::Fish::Gen::FromGetoptLong::gen_fish_complete_from_getopt_long_spec(
         spec => $glspec,
         opt_desc => $opt_desc,
-        cmdname => $cmdname,
-        compname => $compname,
+        cmdname => $args{cmdname},
+        compname => $args{compname},
     );
 }
 
@@ -114,7 +112,7 @@ _
         summary => 'A script that can be fed to the fish shell',
     },
 };
-sub gen_fish_complete_from_getopt_long_script {
+sub gen_fish_complete_from_getopt_long_descriptive_script {
     my %args = @_;
 
     my $filename = $args{filename};
